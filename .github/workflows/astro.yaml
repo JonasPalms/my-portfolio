@@ -17,7 +17,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      SITE_BASE: '/'
+      SITE_BASE: '/my-portfolio'
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
