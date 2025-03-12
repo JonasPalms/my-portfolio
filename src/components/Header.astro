@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<header class="container flex justify-end p-4">
+  <button type="button" id="theme-toggle" class="group cursor-pointer" aria-label="Toggle theme">
+    <Icon name="moon-fill" size="24" class="hidden group-[.dark]:block" />
+    <Icon name="sun-fill" size="24" class="hidden group-[.light]:block" />
+    <Icon name="laptop-line" size="24" class="hidden group-[.system]:block" />
+  </button>
+</header>
+<script>
+  import { setSystemTheme } from '@scripts/theme'
+
+  const themeToggle = document.getElementById('theme-toggle')
+  let currentTheme = document.documentElement.getAttribute('data-theme') || ''
+
+  if (currentTheme) {
+    themeToggle?.classList.add(currentTheme)
+  }
+
+  const toggleTheme = () => {
+    themeToggle?.classList.remove(currentTheme)
+
+    switch (currentTheme) {
+      case 'dark':
+        currentTheme = 'light'
+        localStorage.theme = currentTheme
+        document.documentElement.setAttribute('data-theme', currentTheme)
+        break
+      case 'light':
+        currentTheme = 'system'
+        localStorage.removeItem('theme')
+        setSystemTheme()
+        break
+      case 'system':
+        currentTheme = 'dark'
+        localStorage.theme = currentTheme
+        document.documentElement.setAttribute('data-theme', currentTheme)
+        break
+    }
+
+    themeToggle?.classList.add(currentTheme)
+  }
+
+  themeToggle?.addEventListener('click', toggleTheme)
+</script>

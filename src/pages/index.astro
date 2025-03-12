@@ -1,11 +1,64 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro'
+import type { Project } from '@/types/project.ts'
+import ProjectTile from '@/components/ProjectTile.astro'
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const projects: Project[] = [
+  {
+    title: 'Project 1',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
+    href: '/projects/project-1',
+    tags: ['astro.js', 'tailwind', 'react'],
+  },
+  {
+    title: 'Project 2',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
+    href: '/projects/project-2',
+    tags: ['astro.js', 'tailwind', 'vue'],
+  },
+  {
+    title: 'Project 3',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
+    href: '/projects/project-3',
+    tags: ['astro.js', 'tailwind', 'nuxt'],
+  },
+  {
+    title: 'Project 4',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
+    href: '/projects/project-4',
+    tags: ['astro.js', 'tailwind', 'react'],
+  },
+]
 ---
 
 <Layout>
-	<Welcome />
+  <div class="container px-4 flex flex-col gap-8">
+    <section class="mx-auto max-w-prose">
+      <h1 class="text-4xl font-bold text-center mb-4">Hi 👋</h1>
+      <p class="text-center text-text-muted-light dark:text-text-muted-dark">
+        I am Jonas, a web developer based in Copenhagen, Denmark.
+      </p>
+    </section>
+    <section class="mx-auto max-w-prose">
+      <div class="flex justify-center">
+        <h2 class="text-xl font-bold mb-4 underline-accent">Get in touch</h2>
+      </div>
+      <p class="text-center text-text-muted-light dark:text-text-muted-dark">
+        If you want to get in touch, feel free to reach out to me via email at
+        jonas.p.sorensen@gmail.com, or write me a DM on LinkedIn.
+      </p>
+    </section>
+    <section>
+      <h2 class="text-3xl font-bold text-center mb-4">Projects</h2>
+      <p
+        class="text-center mx-auto max-w-prose text-text-muted-light dark:text-text-muted-dark mb-4"
+      >
+        Here are some of the private projects I've worked on lately. Some of them are more are
+        polished than others 😉.
+      </p>
+      <div class="grid grid-cols-1 gap-4 my-8">
+        {projects.map((project) => <ProjectTile project={project} />)}
+      </div>
+    </section>
+  </div>
 </Layout>

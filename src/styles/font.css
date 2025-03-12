@@ -1,0 +1,21 @@
+@font-face {
+  font-family: RobotoMono;
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url('../assets/fonts/RobotoMono-VariableFont_wght.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: RobotoMono;
+  font-style: italic;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url('../assets/fonts/RobotoMono-Italic-VariableFont_wght.ttf') format('ttf');
+}
+
+html {
+  font-family: RobotoMono, sans-serif;
+  @apply selection:bg-accent-light dark:selection:bg-accent-dark;
+  @apply selection:text-white dark:selection:text-black;
+}

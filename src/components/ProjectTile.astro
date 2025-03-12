@@ -1,0 +1,26 @@
+---
+interface Props {
+  project: {
+    title: string
+    description: string
+    tags: string[]
+  }
+}
+
+const { project } = Astro.props
+import Tag from '@/components/Tag.astro'
+---
+
+<article class="hover:bg-gray-300 dark:hover:bg-gray-800/75 rounded-lg p-4 transition-colors">
+  <a href="/projects/project-1">
+    <h3 class="text-lg font-bold mb-2">
+      {project.title}
+    </h3>
+    <p class="text-text-muted-light dark:text-text-muted-dark mb-3">
+      {project.description}
+    </p>
+    <div class="flex flex-wrap gap-2">
+      {project.tags.map((tag) => <Tag tag={tag} />)}
+    </div>
+  </a>
+</article>
